@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VZone</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="icon" href="favicon.ico" />
+</head>
+<body>
+  <!-- Écran principal -->
+  <div id="game-container">
+    <canvas id="vzone-canvas"></canvas>
+    <div id="score-display">0.0 s</div>
+    <div id="pause-btn" class="icon-btn">⏸️</div>
+  </div>
+
+  <!-- Menu principal -->
+  <div id="menu-screen" class="screen active">
+    <h1 class="logo-title">VZone</h1>
+    <button id="btn-play" class="main-btn">▶️ Jouer</button>
+    <button id="btn-profile" class="sub-btn">👤 Profil</button>
+    <button id="btn-settings" class="sub-btn">⚙️ Paramètres</button>
+    <button id="btn-shop" class="sub-btn">🛍️ Boutique</button>
+    <div class="dev-signature">Développé par Vbold</div>
+  </div>
+
+  <!-- Écran de fin -->
+  <div id="gameover-screen" class="screen">
+    <h2 id="final-score"></h2>
+    <p id="bonus-display"></p>
+    <button id="btn-retry" class="main-btn">🔁 Rejouer</button>
+    <button id="btn-menu" class="sub-btn">🏠 Menu</button>
+  </div>
+
+  <!-- Profil joueur -->
+  <div id="profile-screen" class="screen">
+    <h2>👤 Profil</h2>
+    <label>Pseudo : <input type="text" id="pseudo-input" maxlength="20" /></label>
+    <label>Avatar :
+      <select id="avatar-select">
+        <option value="1">🐱</option>
+        <option value="2">🐰</option>
+        <option value="3">🦊</option>
+        <option value="4">🐼</option>
+      </select>
+    </label>
+    <p>Meilleur score : <span id="best-score">0.0</span> s</p>
+    <div id="badges-list"></div>
+    <button class="sub-btn" onclick="goTo('menu')">Retour</button>
+  </div>
+
+  <!-- Paramètres -->
+  <div id="settings-screen" class="screen">
+    <h2>⚙️ Paramètres</h2>
+    <label><input type="checkbox" id="sound-toggle" checked /> Sons activés</label>
+    <label><input type="checkbox" id="music-toggle" checked /> Musique activée</label>
+    <label>Thème :
+      <select id="theme-select">
+        <option value="dark">Sombre</option>
+        <option value="light">Clair</option>
+      </select>
+    </label>
+    <label>Langue :
+      <select id="lang-select">
+        <option value="fr">Français</option>
+        <option value="en">English</option>
+        <option value="de">Deutsch</option>
+        <option value="es">Español</option>
+        <option value="nl">Nederlands</option>
+        <option value="it">Italiano</option>
+        <option value="pt">Português</option>
+        <option value="ja">日本語</option>
+      </select>
+    </label>
+    <button id="reset-score" class="danger-btn">🗑️ Réinitialiser les scores</button>
+    <button class="sub-btn" onclick="goTo('menu')">Retour</button>
+  </div>
+
+  <!-- Boutique -->
+  <div id="shop-screen" class="screen">
+    <h2>🎨 Boutique</h2>
+    <div id="vcoins-display">💰 <span id="vcoins">0</span></div>
+    <div id="shop-items"></div>
+    <button class="sub-btn" onclick="goTo('menu')">Retour</button>
+  </div>
+
+  <!-- Pause -->
+  <div id="pause-screen" class="screen">
+    <h2>⏸️ Pause</h2>
+    <button id="resume-btn" class="main-btn">▶️ Reprendre</button>
+    <button class="sub-btn" onclick="goTo('menu')">🏠 Quitter</button>
+  </div>
+
+  <!-- Défi du jour -->
+  <div id="daily-challenge" class="screen">
+    <h2>🔥 Défi du jour</h2>
+    <p>Survis au moins <span id="daily-score-goal"></span> s !</p>
+    <button id="accept-challenge" class="main-btn">🆚 Relever le défi</button>
+    <button class="sub-btn" onclick="goTo('menu')">Retour</button>
+  </div>
+
+  <!-- Audios -->
+  <audio id="audio-click" src="assets/sounds/click.mp3" preload="auto"></audio>
+  <audio id="audio-music" src="assets/sounds/music.mp3" loop preload="auto"></audio>
+  <audio id="audio-coin" src="assets/sounds/coin.mp3" preload="auto"></audio>
+  <audio id="audio-collision" src="assets/sounds/collision.mp3" preload="auto"></audio>
+  <audio id="audio-record" src="assets/sounds/record.mp3" preload="auto"></audio>
+
+  <!-- Scripts -->
+  <script src="vzone_lang.js"></script>
+  <script src="vzone.js"></script>
+</body>
+</html>
