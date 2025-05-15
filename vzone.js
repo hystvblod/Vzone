@@ -43,7 +43,10 @@ function startGame() {
   document.getElementById("menu-screen").classList.remove("active");
   document.getElementById("game-container").classList.add("active");
   audioMusic.volume = 0.3;
-  if (user.music) audioMusic.play();
+  if (user.music && audioMusic && audioMusic.src) {
+  try { audioMusic.play(); } catch(e) {}
+}
+
   spawnZones();
   requestAnimationFrame(gameLoop);
 }
@@ -117,7 +120,10 @@ function gameOver() {
   document.getElementById("game-container").classList.remove("active");
   document.getElementById("gameover-screen").classList.add("active");
   audioCollision.volume = 0.5;
-  if (user.sound) audioCollision.play();
+ if (user.music && audioMusic && audioMusic.src) {
+  try { audioMusic.play(); } catch(e) {}
+}
+
 
   const finalScore = score.toFixed(1);
   document.getElementById("final-score").innerText = `Score : ${finalScore} s`;
