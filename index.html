@@ -10,7 +10,7 @@
 <body>
   <!-- Écran principal -->
   <div id="game-container">
-    <canvas id="vzone-canvas"></canvas>
+    <canvas id="gameCanvas"></canvas>
     <div id="score-display">0.0 s</div>
     <div id="pause-btn" class="icon-btn">⏸️</div>
   </div>
@@ -110,21 +110,21 @@
   <audio id="audio-collision" src="assets/sounds/collision.mp3" preload="auto"></audio>
   <audio id="audio-record" src="assets/sounds/record.mp3" preload="auto"></audio>
 
-  <!-- Scripts -->
+  <!-- Scripts : attention à l’ordre -->
   <script src="vzone_lang.js"></script>
   <script src="vzone.js"></script>
+  <script src="ad73e9bd-d7fa-4ad4-a67c-7da3ae541cd5.js"></script> <!-- Mode Esquive -->
+  <script src="cae6caf8-a0eb-4f3c-a94f-cf29a9de8abc.js"></script> <!-- Mode SafeZone -->
   <script>
-    // Gestion des deux boutons de mode de jeu
+    // Relie les boutons du menu principal aux bons modes de jeu
     document.addEventListener('DOMContentLoaded', () => {
       const btnEsquive = document.getElementById('btn-play-esquive');
       const btnSafeZone = document.getElementById('btn-play-safezone');
-      if (btnEsquive && btnSafeZone) {
-        btnEsquive.addEventListener('click', () => {
-          window.startGame && window.startGame('esquive');
-        });
-        btnSafeZone.addEventListener('click', () => {
-          window.startGame && window.startGame('safezone');
-        });
+      if (btnEsquive && typeof startEsquiveMode === "function") {
+        btnEsquive.onclick = startEsquiveMode;
+      }
+      if (btnSafeZone && typeof startSafeZoneMode === "function") {
+        btnSafeZone.onclick = startSafeZoneMode;
       }
     });
   </script>
