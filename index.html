@@ -18,7 +18,10 @@
   <!-- Menu principal -->
   <div id="menu-screen" class="screen active">
     <h1 class="logo-title">VZone</h1>
-    <button id="btn-play" class="main-btn">▶️ Jouer</button>
+    <div style="display: flex; flex-direction: column; gap: 1em; align-items: center;">
+      <button id="btn-play-esquive" class="main-btn" style="width: 220px;">🎮 Jouer : Esquive</button>
+      <button id="btn-play-safezone" class="main-btn" style="width: 220px;">🎯 Jouer : SafeZone</button>
+    </div>
     <button id="btn-profile" class="sub-btn">👤 Profil</button>
     <button id="btn-settings" class="sub-btn">⚙️ Paramètres</button>
     <button id="btn-shop" class="sub-btn">🛍️ Boutique</button>
@@ -110,5 +113,20 @@
   <!-- Scripts -->
   <script src="vzone_lang.js"></script>
   <script src="vzone.js"></script>
+  <script>
+    // Gestion des deux boutons de mode de jeu
+    document.addEventListener('DOMContentLoaded', () => {
+      const btnEsquive = document.getElementById('btn-play-esquive');
+      const btnSafeZone = document.getElementById('btn-play-safezone');
+      if (btnEsquive && btnSafeZone) {
+        btnEsquive.addEventListener('click', () => {
+          window.startGame && window.startGame('esquive');
+        });
+        btnSafeZone.addEventListener('click', () => {
+          window.startGame && window.startGame('safezone');
+        });
+      }
+    });
+  </script>
 </body>
 </html>
