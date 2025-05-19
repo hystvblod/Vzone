@@ -1,36 +1,51 @@
-// === VZone - Mode Safe Zone (temps cumulé) ===
+// === VZone - Mode Safe Zone corrigé ===
 
 let safeZoneRunning = false;
-let playerSZ, safeZone, timeInside = 0, totalRequired = 30, szScore = 0;
+let moveInterval = null;
 
 function startSafeZoneMode() {
   safeZoneRunning = true;
-  playerSZ = { x: 150, y: 150, size: 20, speed: 4 };
-  timeInside = 0;
+  let playerSZ = { x: 150, y: 150, size: 20, speed: 4 };
+  let timeInside = 0;
+  const totalRequired = 30;
+  let safeZone;
 
   const canvas = document.getElementById('gameCanvas');
   const ctx = canvas.getContext('2d');
-
-  resizeCanvas(canvas);
-
-  // Safe zone initiale
-  safeZone = {
-    x: Math.random() * (canvas.width - 100),
-    y: Math.random() * (canvas.height - 100),
-    w: 100,
-    h: 100
-  };
+  canvas.width = window.innerWidth * 0.95;
+  canvas.height = window.innerHeight * 0.7;
+  canvas.setAttribute('tabindex', '0');
+  canvas.focus();
 
   let keys = {};
-  document.onkeydown = e => keys[e.key] = true;
-  document.onkeyup = e => keys[e.key] = false;
+
+  // Nettoyage anciens handlers
+  canvas.onkeydown = null;
+  canvas.onkeyup = null;
+
+  function keydown(e) { keys[e.key] = true; }
+  function keyup(e) { keys[e.key] = false; }
+  canvas.addEventListener('keydown', keydown);
+  canvas.addEventListener('keyup', keyup);
+
+  // Safe zone initiale
+  function spawnSafeZone() {
+    safeZone = {
+      x: Math.random() * (canvas.width - 100),
+      y: Math.random() * (canvas.height - 100),
+      w: 100,
+      h: 100
+    };
+  }
+  spawnSafeZone();
 
   function moveSafeZone() {
     safeZone.x = Math.random() * (canvas.width - safeZone.w);
     safeZone.y = Math.random() * (canvas.height - safeZone.h);
   }
 
-  setInterval(() => {
+  // Bouge la safe zone toutes les 5 secondes
+  moveInterval = setInterval(() => {
     if (safeZoneRunning) moveSafeZone();
   }, 5000);
 
@@ -39,10 +54,10 @@ function startSafeZoneMode() {
     ctx.clearRect(0, 0, canvas.width, canvas.height);
 
     // Déplacements joueur
-    if (keys['ArrowUp']) playerSZ.y -= playerSZ.speed;
-    if (keys['ArrowDown']) playerSZ.y += playerSZ.speed;
-    if (keys['ArrowLeft']) playerSZ.x -= playerSZ.speed;
-    if (keys['ArrowRight']) playerSZ.x += playerSZ.speed;
+    if (keys['ArrowUp'] || keys['z']) playerSZ.y -= playerSZ.speed;
+    if (keys['ArrowDown'] || keys['s']) playerSZ.y += playerSZ.speed;
+    if (keys['ArrowLeft'] || keys['q']) playerSZ.x -= playerSZ.speed;
+    if (keys['ArrowRight'] || keys['d']) playerSZ.x += playerSZ.speed;
 
     // Bordures
     playerSZ.x = Math.max(0, Math.min(canvas.width - playerSZ.size, playerSZ.x));
@@ -73,13 +88,27 @@ function startSafeZoneMode() {
     ctx.fillText('Objectif : ' + totalRequired + 's', 10, 40);
 
     if (timeInside >= totalRequired) {
-      safeZoneRunning = false;
-      alert('Victoire ! Tu as survécu ' + totalRequired + ' secondes.');
+      gameOver();
       return;
     }
 
     requestAnimationFrame(update);
   }
+
+  function gameOver() {
+    safeZoneRunning = false;
+    clearInterval(moveInterval);
+    canvas.removeEventListener('keydown', keydown);
+    canvas.removeEventListener('keyup', keyup);
+    setTimeout(() => {
+      alert('Victoire ! Tu as survécu ' + totalRequired + ' secondes.');
+      document.getElementById("game-container").classList.remove("active");
+      document.getElementById("menu-screen").classList.add("active");
+    }, 50);
+  }
+
+  document.getElementById("menu-screen").classList.remove("active");
+  document.getElementById("game-container").classList.add("active");
 
   update();
 }
