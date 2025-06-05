@@ -9,16 +9,16 @@
 <body>
 
   <header>
-    <h1 id="titreJeu">VZone</h1>
+    <h1 id="titreJeu" data-i18n="game_title">VZone</h1>
     <select id="langSelect"></select>
   </header>
 
   <main>
     <div class="menu-principal">
-      <button id="playEsquive" class="main-button"></button>
-      <button id="playSafeZone" class="main-button"></button>
-      <button id="shopButton" class="main-button"></button>
-      <button id="settingsButton" class="main-button"></button>
+      <button id="playEsquive" class="main-button" data-i18n="menu_play_esquive"></button>
+      <button id="playSafeZone" class="main-button" data-i18n="menu_play_safezone"></button>
+      <button id="shopButton" class="main-button" data-i18n="menu_shop"></button>
+      <button id="settingsButton" class="main-button" data-i18n="menu_settings"></button>
     </div>
 
     <!-- Zone de jeu -->
@@ -33,9 +33,7 @@
     <p>&copy; 2025 VZone</p>
   </footer>
 
-  <!-- Scripts langues existants UNIQUEMENT -->
-  <script src="js/lang/fr.js"></script>
-  <!-- Ajouter d'autres langues ici quand tu les auras créées -->
+  <!-- Scripts langues -->
 
   <!-- Scripts principaux -->
   <script src="js/core.js"></script>
@@ -43,7 +41,6 @@
   <script src="js/game_safezone.js"></script>
   <script src="js/vzone.js"></script>
   <script src="js/vzone_i18n.js"></script>
-  <script src="js/vzone_lang.js"></script>
   <script src="js/orientation.js"></script>
   <!-- NE PAS inclure shop.js, settings.js, loader.js s'ils n'existent pas dans /js/ -->
 

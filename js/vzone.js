@@ -230,11 +230,6 @@ document.getElementById("theme-select").onchange = (e) => {
   document.body.classList.toggle("light", user.theme === "light");
   saveUser();
 };
-document.getElementById("lang-select").onchange = (e) => {
-  user.lang = e.target.value;
-  applyLang(user.lang);
-  saveUser();
-};
 document.getElementById("reset-score").onclick = () => {
   bestScore = 0;
   user.vcoins = 0;
@@ -257,25 +252,3 @@ document.getElementById("avatar-select").onchange = (e) => {
   saveUser();
 };
 
-// =======================
-// LANGUE
-// =======================
-
-function applyLang(langCode) {
-  const dict = LANG[langCode] || LANG["en"];
-  document.getElementById("btn-play").innerText = dict.play;
-  document.getElementById("btn-profile").innerText = dict.profile;
-  document.getElementById("btn-settings").innerText = dict.settings;
-  document.getElementById("btn-shop").innerText = dict.shop;
-  document.getElementById("btn-retry").innerText = dict.retry;
-  document.getElementById("btn-menu").innerText = dict.menu;
-  document.getElementById("resume-btn").innerText = dict.resume;
-  document.querySelector("#settings-screen h2").innerText = dict.settings;
-  document.querySelector("label[for='sound-toggle']").innerText = dict.sound;
-  document.querySelector("label[for='music-toggle']").innerText = dict.music;
-  document.querySelector("label[for='theme-select']").innerText = dict.theme;
-  document.querySelector("label[for='lang-select']").innerText = dict.lang;
-  document.getElementById("reset-score").innerText = dict.reset;
-  document.querySelector("#profile-screen h2").innerText = dict.profile;
-  document.getElementById("shop-screen").querySelector("h2").innerText = dict.shop_title;
-}

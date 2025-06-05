@@ -132,12 +132,12 @@ function startSafeZoneMode() {
 function showVictorySafeZone(score) {
   showOverlay(`
     <div style="background:#232342;padding:2.2em 2.2em 1.4em 2.2em;border-radius:20px;box-shadow:0 6px 32px #0008;text-align:center;min-width:240px;max-width:97vw">
-      <h2 style="color:#1eff86">Bravo !</h2>
+      <h2 style="color:#1eff86">${t('victory_title')}</h2>
       <p style="font-size:1.2em;color:#fff;margin:0.6em 0 1.3em 0;">
         Tu as cumulé <b>${score.toFixed(1)} s</b> dans la zone !
       </p>
-      <button class="main-button" onclick="hideOverlay();launchMode('safe')">🔁 Rejouer</button>
-      <button class="sub-btn" style="margin-left:0.5em" onclick="hideOverlay()">🏠 Menu</button>
+      <button class="main-button" onclick="hideOverlay();launchMode('safe')">${t('retry')}</button>
+      <button class="sub-btn" style="margin-left:0.5em" onclick="hideOverlay()">${t('menu')}</button>
     </div>
   `);
 }
