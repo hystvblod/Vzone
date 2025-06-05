@@ -56,3 +56,8 @@ To add a new translation:
 
 Once a file is loaded, selecting the language from the drop‑down will update
 all interface text.
+
+## License
+
+This project is released under the [MIT License](LICENSE).
+
