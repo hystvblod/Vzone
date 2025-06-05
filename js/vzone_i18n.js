@@ -1,7 +1,8 @@
 // === VZone i18n.js ===
 
 let currentLang = 'fr';
-const supportedLangs = ['fr', 'en', 'es', 'de', 'it', 'pt', 'nl', 'ja'];
+// Keep all languages available even if some lack translations for now
+const supportedLangs = ['fr', 'en', 'es', 'de', 'it', 'pt', 'pt-br', 'nl', 'ar', 'ja'];
 const translations = {};
 
 // Change la langue de l'interface
