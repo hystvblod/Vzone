@@ -1,3 +1,4 @@
+/* global registerTranslations */
 // === js/lang/fr.js ===
 registerTranslations('fr', {
   "bouton_jouer_esquive": "Jouer : Esquive",
