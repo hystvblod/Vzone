@@ -32,11 +32,13 @@ function startEsquiveMode() {
   let lastPos = null;
 
   canvas.ontouchstart = e => {
+    e.preventDefault();
     dragging = true;
     const touch = e.touches[0];
     lastPos = { x: touch.clientX, y: touch.clientY };
   };
   canvas.ontouchmove = e => {
+    e.preventDefault();
     if (!dragging) return;
     const touch = e.touches[0];
     const dx = touch.clientX - lastPos.x;

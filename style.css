@@ -128,6 +128,7 @@ main {
   background: #181824;
   border: 3px solid #222246;
   border-radius: 18px;
+  touch-action: none;
   margin-bottom: 2.2rem;
   box-shadow: 0 4px 24px rgba(50,50,110,0.18);
   transition: border 0.2s;
