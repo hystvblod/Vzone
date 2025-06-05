@@ -35,6 +35,20 @@ npx serve .
 
 Then visit `http://localhost:8000` (or the port printed by the server) and start playing.
 
+## Running tests
+
+Install dependencies once with:
+
+```bash
+npm install
+```
+
+Then execute:
+
+```bash
+npm test
+```
+
 ## Translations
 
 Internationalisation is handled through small language modules. All files
