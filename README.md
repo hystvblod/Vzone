@@ -37,13 +37,15 @@ Then visit `http://localhost:8000` (or the port printed by the server) and start
 
 ## Running tests
 
-Install dependencies once with:
+Before running tests, install all dependencies:
 
 ```bash
 npm install
 ```
 
-Then execute:
+The project uses [Jest](https://jestjs.io/) for the unit tests and
+[ESLint](https://eslint.org/) for linting. Once the dependencies are
+installed, run:
 
 ```bash
 npm test
