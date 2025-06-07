@@ -2,18 +2,18 @@
 
 function openSettings() {
   let html = `<div style="background:#222238;padding:2.1em 1.2em;border-radius:22px;min-width:260px;max-width:98vw;text-align:center;box-shadow:0 6px 30px #0008">
-    <h2 style="color:#f1c40f;margin-bottom:1.1em;">${getTrad("bouton_parametres")}</h2>
+    <h2 style="color:#f1c40f;margin-bottom:1.1em;">${t('menu_settings')}</h2>
     <div style="margin-bottom:1.2em">
       <label style="display:block;margin-bottom:0.6em;">
         <input type="checkbox" id="sound-toggle" checked style="margin-right:0.8em;vertical-align:middle;">
-        <span style="vertical-align:middle;">Sons activés</span>
+        <span style="vertical-align:middle;">${t('sound')}</span>
       </label>
       <label style="display:block;margin-bottom:0.6em;">
         <input type="checkbox" id="music-toggle" checked style="margin-right:0.8em;vertical-align:middle;">
-        <span style="vertical-align:middle;">Musique activée</span>
+        <span style="vertical-align:middle;">${t('music')}</span>
       </label>
       <label style="display:block;margin-bottom:0.7em;">
-        Thème :
+        ${t('theme')} :
         <select id="theme-select" style="margin-left:0.8em;">
           <option value="classic">Classique</option>
           <option value="neon">Néon</option>
@@ -21,7 +21,7 @@ function openSettings() {
         </select>
       </label>
       <label style="display:block;margin-bottom:1em;">
-        Langue :
+        ${t('lang')} :
         <select id="settings-lang-select" style="margin-left:0.8em;">
           <option value="fr">Français</option>
           <option value="en">English</option>
@@ -35,8 +35,8 @@ function openSettings() {
         </select>
       </label>
     </div>
-    <button class="danger-btn" id="reset-score">🗑️ Réinitialiser le score</button>
-    <button class="sub-btn" style="margin-left:0.5em" onclick="hideOverlay()">Retour</button>
+    <button class="danger-btn" id="reset-score">${t('reset')}</button>
+    <button class="sub-btn" style="margin-left:0.5em" onclick="hideOverlay()">${t('back')}</button>
   </div>`;
 
   showOverlay(html);
@@ -54,7 +54,7 @@ function openSettings() {
       localStorage.removeItem('vzone-best-esquive');
       localStorage.removeItem('vzone-best-safezone');
       hideOverlay();
-      alert("Scores réinitialisés !");
+      alert(t('scores_reset'));
     };
     // Sons et musique : branche selon ton système (assets/audio, etc.)
   }, 80);

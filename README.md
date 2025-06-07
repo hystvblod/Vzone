@@ -53,8 +53,7 @@ npm test
 
 Internationalisation is handled through small language modules. All files
 reside under [`js/lang`](js/lang) and each module registers its strings via
-`registerTranslations(lang, data)`. For example [`fr.js`](js/lang/fr.js)
-provides French text.
+`registerTranslations(lang, data)`.
 
 Supported languages are listed in [`js/vzone_i18n.js`](js/vzone_i18n.js)
 inside the `supportedLangs` array. Each language file must be referenced in

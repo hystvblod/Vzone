@@ -26,7 +26,7 @@ let currentTheme = localStorage.getItem('vzone-theme') || 'classic';
 
 function openShop() {
   let html = `<div style="background:#222238;padding:2em 1.2em;border-radius:22px;min-width:260px;max-width:98vw;text-align:center;box-shadow:0 6px 30px #0008">
-    <h2 style="color:#f1c40f;margin-bottom:1em;">${getTrad("bouton_boutique")}</h2>
+    <h2 style="color:#f1c40f;margin-bottom:1em;">${t('shop_title')}</h2>
     <div style="display:flex;gap:1.5em;justify-content:center;margin-bottom:1.6em;flex-wrap:wrap;">`;
 
   THEMES.forEach(th => {
@@ -52,7 +52,7 @@ function openShop() {
   });
 
   html += `</div>
-    <button class="sub-btn" onclick="hideOverlay()">${getTrad("bouton_parametres") || "Retour"}</button>
+    <button class="sub-btn" onclick="hideOverlay()">${t('back')}</button>
   </div>`;
   showOverlay(html);
 }
@@ -69,13 +69,6 @@ function applyTheme(themeId) {
   const theme = THEMES.find(th => th.id === themeId) || THEMES[0];
   document.body.style.setProperty('--main-color', theme.color);
   // Tu peux customiser ici pour changer aussi le fond, le canvas, etc.
-}
-
-// Utilitaire pour traduction dans la boutique
-function getTrad(key) {
-  return translations[currentLang] && translations[currentLang][key]
-    ? translations[currentLang][key]
-    : (translations['en'] && translations['en'][key]) || key;
 }
 
 // Branche le bouton boutique sur le menu principal
