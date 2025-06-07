@@ -30,6 +30,8 @@ const translations = {
     challenge_accept: '\uD83C\uDD9A Relever le d\u00e9fi',
     shop_title: '\uD83C\uDFA8 Boutique',
     badge_survivor: '\uD83C\uDFC6 Survivant !',
+    back: 'Retour',
+    scores_reset: 'Scores r\u00e9initialis\u00e9s !',
     game_over_title: 'Game Over !',
     victory_title: 'Bravo !',
     score_label: 'Score :'
@@ -60,6 +62,8 @@ const translations = {
     challenge_accept: '\uD83C\uDD9A Accept challenge',
     shop_title: '\uD83C\uDFA8 Shop',
     badge_survivor: '\uD83C\uDFC6 Survivor!',
+    back: 'Back',
+    scores_reset: 'Scores reset!',
     game_over_title: 'Game Over!',
     victory_title: 'Well done!',
     score_label: 'Score:'
@@ -84,7 +88,9 @@ const translations = {
     challenge_goal: '\u00dcberlebe mindestens',
     challenge_accept: '\uD83C\uDD9A Herausforderung annehmen',
     shop_title: '\uD83C\uDFA8 Shop',
-    badge_survivor: '\uD83C\uDFC6 \u00dcberlebender!'
+    badge_survivor: '\uD83C\uDFC6 \u00dcberlebender!',
+    back: 'Zur\u00fcck',
+    scores_reset: 'Punkte zur\u00fcckgesetzt!'
   },
   es: {
     play: '\u25B6\uFE0F Jugar',
@@ -106,7 +112,9 @@ const translations = {
     challenge_goal: 'Sobrevive al menos',
     challenge_accept: '\uD83C\uDD9A Aceptar desaf\u00edo',
     shop_title: '\uD83C\uDFA8 Tienda',
-    badge_survivor: '\uD83C\uDFC6 Superviviente!'
+    badge_survivor: '\uD83C\uDFC6 Superviviente!',
+    back: 'Volver',
+    scores_reset: '\u00a1Puntuaciones reiniciadas!'
   },
   nl: {
     play: '\u25B6\uFE0F Spelen',
@@ -128,7 +136,9 @@ const translations = {
     challenge_goal: 'Overleef minstens',
     challenge_accept: '\uD83C\uDD9A Uitdaging accepteren',
     shop_title: '\uD83C\uDFA8 Winkel',
-    badge_survivor: '\uD83C\uDFC6 Overlever!'
+    badge_survivor: '\uD83C\uDFC6 Overlever!',
+    back: 'Terug',
+    scores_reset: 'Scores gereset!'
   },
   it: {
     play: '\u25B6\uFE0F Gioca',
@@ -150,7 +160,9 @@ const translations = {
     challenge_goal: 'Sopravvivi almeno',
     challenge_accept: '\uD83C\uDD9A Accetta la sfida',
     shop_title: '\uD83C\uDFA8 Negozio',
-    badge_survivor: '\uD83C\uDFC6 Sopravvissuto!'
+    badge_survivor: '\uD83C\uDFC6 Sopravvissuto!',
+    back: 'Indietro',
+    scores_reset: 'Punteggi azzerati!'
   },
   pt: {
     play: '\u25B6\uFE0F Jogar',
@@ -172,7 +184,57 @@ const translations = {
     challenge_goal: 'Sobreviva por pelo menos',
     challenge_accept: '\uD83C\uDD9A Aceitar desafio',
     shop_title: '\uD83C\uDFA8 Loja',
-    badge_survivor: '\uD83C\uDFC6 Sobrevivente!'
+    badge_survivor: '\uD83C\uDFC6 Sobrevivente!',
+    back: 'Voltar',
+    scores_reset: 'Pontua\u00e7\u00e3o reiniciada!'
+  },
+  'pt-br': {
+    play: '\u25B6\uFE0F Jogar',
+    profile: '\uD83D\uDC64 Perfil',
+    settings: '\u2699\uFE0F Configura\u00e7\u00f5es',
+    shop: '\uD83D\uDED9\uFE0F Loja',
+    pause: '\u23F8\uFE0F Pausar',
+    resume: '\u25B6\uFE0F Retomar',
+    menu: '\uD83C\uDFE0 Menu',
+    retry: '\uD83D\uDD01 Repetir',
+    sound: 'Som ativado',
+    music: 'M\u00fasica ativada',
+    theme: 'Tema',
+    lang: 'Idioma',
+    reset: '\uD83D\uDDD1\uFE0F Reiniciar pontua\u00e7\u00e3o',
+    best: 'Melhor pontua\u00e7\u00e3o',
+    coins: 'VCoins',
+    challenge: '\uD83D\uDD25 Desafio di\u00e1rio',
+    challenge_goal: 'Sobreviva por pelo menos',
+    challenge_accept: '\uD83C\uDD9A Aceitar desafio',
+    shop_title: '\uD83C\uDFA8 Loja',
+    badge_survivor: '\uD83C\uDFC6 Sobrevivente!',
+    back: 'Voltar',
+    scores_reset: 'Pontua\u00e7\u00e3o reiniciada!'
+  },
+  ar: {
+    play: '\u25B6\uFE0F \u0627\u0644\u0644\u0639\u0628',
+    profile: '\uD83D\uDC64 \u0627\u0644\u0645\u0644\u0641 \u0627\u0644\u0634\u062e\u0635\u064a',
+    settings: '\u2699\uFE0F \u0627\u0644\u0625\u0639\u062f\u0627\u062f\u0627\u062a',
+    shop: '\uD83D\uDED9\uFE0F \u0627\u0644\u0645\u062a\u062c\u0631',
+    pause: '\u23F8\uFE0F \u0625\u064a\u0642\u0627\u0641 \u0645\u0624\u0642\u062a',
+    resume: '\u25B6\uFE0F \u0627\u0633\u062a\u0626\u0646\u0627\u0641',
+    menu: '\uD83C\uDFE0 \u0627\u0644\u0642\u0627\u0626\u0645\u0629',
+    retry: '\uD83D\uDD01 \u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u0645\u062d\u0627\u0648\u0644\u0629',
+    sound: '\u0627\u0644\u0635\u0648\u062a \u0645\u0641\u0639\u0644',
+    music: '\u0627\u0644\u0645\u0648\u0633\u064a\u0642\u0649 \u0645\u0641\u0639\u0644\u0629',
+    theme: '\u0627\u0644\u0633\u0645\u0629',
+    lang: '\u0627\u0644\u0644\u063a\u0629',
+    reset: '\uD83D\uDDD1\uFE0F \u0625\u0639\u0627\u062f\u0629 \u062a\u0639\u064a\u064a\u0646 \u0627\u0644\u0646\u0642\u0627\u0637',
+    best: '\u0623\u0641\u0636\u0644 \u0646\u062a\u064a\u062c\u0629',
+    coins: 'VCoins',
+    challenge: '\uD83D\uDD25 \u062a\u062d\u062f\u064a \u0627\u0644\u064a\u0648\u0645',
+    challenge_goal: '\u0627\u0635\u0645\u062f \u0639\u0644\u0649 \u0627\u0644\u0623\u0642\u0644',
+    challenge_accept: '\uD83C\uDD9A \u0627\u0642\u0628\u0644 \u0627\u0644\u062a\u062d\u062f\u064a',
+    shop_title: '\uD83C\uDFA8 \u0627\u0644\u0645\u062a\u062c\u0631',
+    badge_survivor: '\uD83C\uDFC6 \u0627\u0644\u0646\u0627\u062c\u064a!',
+    back: '\u0631\u062c\u0648\u0639',
+    scores_reset: '\u062a\u0645\u062a \u0625\u0639\u0627\u062f\u0629 \u0627\u0644\u0646\u0642\u0627\u0637!'
   },
   ja: {
     play: '\u25B6\uFE0F \u30d7\u30ec\u30a4',
@@ -194,7 +256,9 @@ const translations = {
     challenge_goal: '\u5c11\u306a\u304f\u3068\u3082\u751f\u304d\u5ef6\u3073\u308d',
     challenge_accept: '\uD83C\uDD9A \u30c1\u30e3\u30ec\u30f3\u30b8\u958b\u59cb',
     shop_title: '\uD83C\uDFA8 \u30b7\u30e7\u30c3\u30d7',
-    badge_survivor: '\uD83C\uDFC6 \u30b5\u30d0\u30a4\u30d0\u30fc!'
+    badge_survivor: '\uD83C\uDFC6 \u30b5\u30d0\u30a4\u30d0\u30fc!',
+    back: '\u623b\u308b',
+    scores_reset: '\u30b9\u30b3\u30a2\u3092\u30ea\u30bb\u30c3\u30c8\u3057\u307e\u3057\u305f\uFF01'
   }
 };
 
