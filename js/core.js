@@ -26,11 +26,43 @@ function clearAllEvents() {
   document.ontouchend = null;
 }
 
+// Affiche ou masque le canvas
+function showCanvas() {
+  const canvas = document.getElementById('gameCanvas');
+  if (canvas) canvas.style.display = 'block';
+}
+
+function hideCanvas() {
+  const canvas = document.getElementById('gameCanvas');
+  if (canvas) canvas.style.display = 'none';
+}
+
+// Affiche ou masque le menu principal
+function showMenu() {
+  const menu = document.querySelector('.menu-principal');
+  if (menu) menu.style.display = 'flex';
+}
+
+function hideMenu() {
+  const menu = document.querySelector('.menu-principal');
+  if (menu) menu.style.display = 'none';
+}
+
+function returnToMenu() {
+  hideOverlay();
+  hideCanvas();
+  showMenu();
+  resetGameCanvas();
+  clearAllEvents();
+}
+
 // Lance le bon mode de jeu selon le paramètre (esquive ou safezone)
 function launchMode(mode) {
   resetGameCanvas();
   clearAllEvents();
   hideOverlay();
+  hideMenu();
+  showCanvas();
 
   if (mode === 'esquive' && typeof startEsquiveMode === 'function') {
     startEsquiveMode();
@@ -73,6 +105,14 @@ window.addEventListener('DOMContentLoaded', () => {
 });
 
 if (typeof module !== "undefined") {
-  module.exports = { resizeCanvas, clearAllEvents };
+  module.exports = {
+    resizeCanvas,
+    clearAllEvents,
+    showCanvas,
+    hideCanvas,
+    showMenu,
+    hideMenu,
+    returnToMenu
+  };
 }
 
