@@ -143,7 +143,7 @@ function showGameOverEsquive(score) {
       <h2 style="color:#f1c40f">${t('game_over_title')}</h2>
       <p style="font-size:1.3em;color:#fff;margin:0.6em 0 1.3em 0;">${t('score_label')} <b>${score.toFixed(1)}</b></p>
       <button class="main-button" onclick="hideOverlay();launchMode('esquive')">${t('retry')}</button>
-      <button class="sub-btn" style="margin-left:0.5em" onclick="hideOverlay()">${t('menu')}</button>
+      <button class="sub-btn" style="margin-left:0.5em" onclick="returnToMenu()">${t('menu')}</button>
     </div>
   `);
 }

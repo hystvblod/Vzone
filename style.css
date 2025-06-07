@@ -132,7 +132,7 @@ main {
   margin-bottom: 2.2rem;
   box-shadow: 0 4px 24px rgba(50,50,110,0.18);
   transition: border 0.2s;
-  display: block;
+  display: none;
 }
 
 #uiOverlay, .ui-overlay {

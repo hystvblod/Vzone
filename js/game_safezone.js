@@ -139,7 +139,7 @@ function showVictorySafeZone(score) {
         Tu as cumulé <b>${score.toFixed(1)} s</b> dans la zone !
       </p>
       <button class="main-button" onclick="hideOverlay();launchMode('safe')">${t('retry')}</button>
-      <button class="sub-btn" style="margin-left:0.5em" onclick="hideOverlay()">${t('menu')}</button>
+      <button class="sub-btn" style="margin-left:0.5em" onclick="returnToMenu()">${t('menu')}</button>
     </div>
   `);
 }
