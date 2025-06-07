@@ -1,7 +1,7 @@
 // === VZone - game_esquive.js ===
 
 let esquiveRunning = false;
-let player, obstacles = [], esquiveScore = 0;
+let player, obstacles = [], esquiveScore = 0, level = 0;
 let esquiveInterval = null, esquiveAnimFrame = null;
 
 function startEsquiveMode() {
@@ -15,10 +15,31 @@ function startEsquiveMode() {
     color: "#f1c40f" 
   };
   obstacles = [];
+  level = 0;
+
+  function addObstacle() {
+    level++;
+    const base = 18;
+    const r = base + level * 2;
+    const speed = 2 + level * 0.4;
+    const angle = Math.random() * Math.PI * 2;
+    obstacles.push({
+      x: Math.random() * (canvas.width - 2 * r) + r,
+      y: Math.random() * (canvas.height - 2 * r) + r,
+      radius: r,
+      dx: speed * Math.cos(angle),
+      dy: speed * Math.sin(angle),
+      color: "#e74c3c"
+    });
+  }
 
   const canvas = document.getElementById('gameCanvas');
   const ctx = canvas.getContext('2d');
   resizeCanvas(canvas);
+
+  addObstacle();
+  if (esquiveInterval) clearInterval(esquiveInterval);
+  esquiveInterval = setInterval(addObstacle, 6000);
 
   // Gestion des contrôles (clavier + tactile)
   let keys = {};
@@ -64,18 +85,7 @@ function startEsquiveMode() {
   canvas.onmouseup = () => dragging = false;
   canvas.onmouseleave = () => dragging = false;
 
-  // Spawn obstacles régulièrement
-  if (esquiveInterval) clearInterval(esquiveInterval);
-  esquiveInterval = setInterval(() => {
-    const r = 18 + Math.random() * 18;
-    obstacles.push({
-      x: Math.random() * (canvas.width - 2*r) + r,
-      y: -r,
-      radius: r,
-      speed: 2.3 + Math.random() * 2.3,
-      color: "#e74c3c"
-    });
-  }, 900);
+
 
   function update() {
     if (!esquiveRunning) return;
@@ -102,7 +112,12 @@ function startEsquiveMode() {
 
     // Obstacles (ronds rouges)
     for (let o of obstacles) {
-      o.y += o.speed;
+      o.x += o.dx;
+      o.y += o.dy;
+
+      if (o.x - o.radius < 0 || o.x + o.radius > canvas.width) o.dx *= -1;
+      if (o.y - o.radius < 0 || o.y + o.radius > canvas.height) o.dy *= -1;
+
       ctx.beginPath();
       ctx.arc(o.x, o.y, o.radius, 0, 2 * Math.PI);
       ctx.fillStyle = o.color;
@@ -120,9 +135,6 @@ function startEsquiveMode() {
         return;
       }
     }
-
-    // Nettoyage obstacles sortis du canvas
-    obstacles = obstacles.filter(o => o.y - o.radius < canvas.height);
 
     // Score : temps de survie (ms → s)
     esquiveScore += 1/60;
