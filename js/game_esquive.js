@@ -21,11 +21,23 @@ function startEsquiveMode() {
     level++;
     const base = 18;
     const r = base + level * 2;
-    const speed = 2 + level * 0.4;
+    let speed = 2;
+    if (level > 3) speed += (level - 3) * 0.4;
     const angle = Math.random() * Math.PI * 2;
+
+    // Positionnement initial éloigné du joueur pour éviter les collisions immédiates
+    let x, y;
+    const minDist = player.radius + r + 60;
+    let attempts = 0;
+    do {
+      x = Math.random() * (canvas.width - 2 * r) + r;
+      y = Math.random() * (canvas.height - 2 * r) + r;
+      attempts++;
+    } while (Math.hypot(x - player.x, y - player.y) < minDist && attempts < 50);
+
     obstacles.push({
-      x: Math.random() * (canvas.width - 2 * r) + r,
-      y: Math.random() * (canvas.height - 2 * r) + r,
+      x,
+      y,
       radius: r,
       dx: speed * Math.cos(angle),
       dy: speed * Math.sin(angle),
