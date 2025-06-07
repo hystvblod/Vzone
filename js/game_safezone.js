@@ -3,6 +3,7 @@
 let safeZoneRunning = false;
 let playerSZ, safeZone, timeInside = 0, totalRequired = 30;
 let safezoneAnimFrame = null, szMoveInterval = null;
+let obstaclesSZ = [], levelSZ = 0, obsIntervalSZ = null;
 
 function startSafeZoneMode() {
   safeZoneRunning = true;
@@ -19,6 +20,28 @@ function startSafeZoneMode() {
     y: Math.random() * (canvas.height - 140) + 70,
     radius: 54
   };
+  obstaclesSZ = [];
+  levelSZ = 0;
+
+  function addObstacleSZ() {
+    levelSZ++;
+    const base = 18;
+    const r = base + levelSZ * 2;
+    const speed = 2 + levelSZ * 0.4;
+    const angle = Math.random() * Math.PI * 2;
+    obstaclesSZ.push({
+      x: Math.random() * (canvas.width - 2 * r) + r,
+      y: Math.random() * (canvas.height - 2 * r) + r,
+      radius: r,
+      dx: speed * Math.cos(angle),
+      dy: speed * Math.sin(angle),
+    color: "#e74c3c"
+    });
+  }
+
+  addObstacleSZ();
+  if (obsIntervalSZ) clearInterval(obsIntervalSZ);
+  obsIntervalSZ = setInterval(addObstacleSZ, 6000);
 
   // Contrôles clavier/tactile/souris
   let keys = {};
@@ -103,6 +126,32 @@ function startSafeZoneMode() {
     ctx.fill();
     ctx.shadowBlur = 0;
 
+    // Obstacles rebondissants
+    for (let o of obstaclesSZ) {
+      o.x += o.dx;
+      o.y += o.dy;
+
+      if (o.x - o.radius < 0 || o.x + o.radius > canvas.width) o.dx *= -1;
+      if (o.y - o.radius < 0 || o.y + o.radius > canvas.height) o.dy *= -1;
+
+      ctx.beginPath();
+      ctx.arc(o.x, o.y, o.radius, 0, 2 * Math.PI);
+      ctx.fillStyle = o.color;
+      ctx.globalAlpha = 0.90;
+      ctx.fill();
+      ctx.globalAlpha = 1.0;
+
+      const dCol = Math.hypot(playerSZ.x - o.x, playerSZ.y - o.y);
+      if (dCol < playerSZ.radius + o.radius) {
+        safeZoneRunning = false;
+        clearInterval(szMoveInterval);
+        clearInterval(obsIntervalSZ);
+        cancelAnimationFrame(safezoneAnimFrame);
+        showGameOverSafeZone(timeInside);
+        return;
+      }
+    }
+
     // Est-ce que le joueur est dans la zone ?
     const dist = Math.hypot(playerSZ.x - safeZone.x, playerSZ.y - safeZone.y);
     if (dist < safeZone.radius - playerSZ.radius * 0.5) {
@@ -119,6 +168,7 @@ function startSafeZoneMode() {
     if (timeInside >= totalRequired) {
       safeZoneRunning = false;
       clearInterval(szMoveInterval);
+      clearInterval(obsIntervalSZ);
       cancelAnimationFrame(safezoneAnimFrame);
       showVictorySafeZone(timeInside);
       return;
@@ -138,6 +188,18 @@ function showVictorySafeZone(score) {
       <p style="font-size:1.2em;color:#fff;margin:0.6em 0 1.3em 0;">
         Tu as cumulé <b>${score.toFixed(1)} s</b> dans la zone !
       </p>
+      <button class="main-button" onclick="hideOverlay();launchMode('safe')">${t('retry')}</button>
+      <button class="sub-btn" style="margin-left:0.5em" onclick="returnToMenu()">${t('menu')}</button>
+    </div>
+  `);
+}
+
+// Overlay d\'échec SafeZone
+function showGameOverSafeZone(score) {
+  showOverlay(`
+    <div style="background:#232342;padding:2.2em 2.2em 1.4em 2.2em;border-radius:20px;box-shadow:0 6px 32px #0008;text-align:center;min-width:240px;max-width:97vw">
+      <h2 style="color:#f1c40f">${t('game_over_title')}</h2>
+      <p style="font-size:1.2em;color:#fff;margin:0.6em 0 1.3em 0;">${t('score_label')} <b>${score.toFixed(1)}</b></p>
       <button class="main-button" onclick="hideOverlay();launchMode('safe')">${t('retry')}</button>
       <button class="sub-btn" style="margin-left:0.5em" onclick="returnToMenu()">${t('menu')}</button>
     </div>

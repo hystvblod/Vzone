@@ -37,6 +37,16 @@ function hideCanvas() {
   if (canvas) canvas.style.display = 'none';
 }
 
+function showBackButton() {
+  const b = document.getElementById('backButton');
+  if (b) b.style.display = 'block';
+}
+
+function hideBackButton() {
+  const b = document.getElementById('backButton');
+  if (b) b.style.display = 'none';
+}
+
 // Affiche ou masque le menu principal
 function showMenu() {
   const menu = document.querySelector('.menu-principal');
@@ -54,6 +64,7 @@ function returnToMenu() {
   showMenu();
   resetGameCanvas();
   clearAllEvents();
+  hideBackButton();
 }
 
 // Lance le bon mode de jeu selon le paramètre (esquive ou safezone)
@@ -63,6 +74,7 @@ function launchMode(mode) {
   hideOverlay();
   hideMenu();
   showCanvas();
+  showBackButton();
 
   if (mode === 'esquive' && typeof startEsquiveMode === 'function') {
     startEsquiveMode();
@@ -112,7 +124,9 @@ if (typeof module !== "undefined") {
     hideCanvas,
     showMenu,
     hideMenu,
-    returnToMenu
+    returnToMenu,
+    showBackButton,
+    hideBackButton
   };
 }
 
