@@ -32,7 +32,8 @@ const translations = {
     badge_survivor: '\uD83C\uDFC6 Survivant !',
     game_over_title: 'Game Over !',
     victory_title: 'Bravo !',
-    score_label: 'Score :'
+    score_label: 'Score :',
+    rotate_message: 'Veuillez tourner votre appareil'
   },
   en: {
     menu_play_esquive: 'Play: Dodge',
@@ -62,7 +63,8 @@ const translations = {
     badge_survivor: '\uD83C\uDFC6 Survivor!',
     game_over_title: 'Game Over!',
     victory_title: 'Well done!',
-    score_label: 'Score:'
+    score_label: 'Score:',
+    rotate_message: 'Please rotate your device'
   },
   de: {
     play: '\u25B6\uFE0F Spielen',
@@ -84,7 +86,8 @@ const translations = {
     challenge_goal: '\u00dcberlebe mindestens',
     challenge_accept: '\uD83C\uDD9A Herausforderung annehmen',
     shop_title: '\uD83C\uDFA8 Shop',
-    badge_survivor: '\uD83C\uDFC6 \u00dcberlebender!'
+    badge_survivor: '\uD83C\uDFC6 \u00dcberlebender!',
+    rotate_message: 'Bitte drehen Sie Ihr Ger\u00e4t'
   },
   es: {
     play: '\u25B6\uFE0F Jugar',
@@ -106,7 +109,8 @@ const translations = {
     challenge_goal: 'Sobrevive al menos',
     challenge_accept: '\uD83C\uDD9A Aceptar desaf\u00edo',
     shop_title: '\uD83C\uDFA8 Tienda',
-    badge_survivor: '\uD83C\uDFC6 Superviviente!'
+    badge_survivor: '\uD83C\uDFC6 Superviviente!',
+    rotate_message: 'Gira tu dispositivo'
   },
   nl: {
     play: '\u25B6\uFE0F Spelen',
@@ -128,7 +132,8 @@ const translations = {
     challenge_goal: 'Overleef minstens',
     challenge_accept: '\uD83C\uDD9A Uitdaging accepteren',
     shop_title: '\uD83C\uDFA8 Winkel',
-    badge_survivor: '\uD83C\uDFC6 Overlever!'
+    badge_survivor: '\uD83C\uDFC6 Overlever!',
+    rotate_message: 'Draai je apparaat'
   },
   it: {
     play: '\u25B6\uFE0F Gioca',
@@ -150,7 +155,8 @@ const translations = {
     challenge_goal: 'Sopravvivi almeno',
     challenge_accept: '\uD83C\uDD9A Accetta la sfida',
     shop_title: '\uD83C\uDFA8 Negozio',
-    badge_survivor: '\uD83C\uDFC6 Sopravvissuto!'
+    badge_survivor: '\uD83C\uDFC6 Sopravvissuto!',
+    rotate_message: 'Ruota il dispositivo'
   },
   pt: {
     play: '\u25B6\uFE0F Jogar',
@@ -172,7 +178,8 @@ const translations = {
     challenge_goal: 'Sobreviva por pelo menos',
     challenge_accept: '\uD83C\uDD9A Aceitar desafio',
     shop_title: '\uD83C\uDFA8 Loja',
-    badge_survivor: '\uD83C\uDFC6 Sobrevivente!'
+    badge_survivor: '\uD83C\uDFC6 Sobrevivente!',
+    rotate_message: 'Gire o dispositivo'
   },
   ja: {
     play: '\u25B6\uFE0F \u30d7\u30ec\u30a4',
@@ -194,7 +201,8 @@ const translations = {
     challenge_goal: '\u5c11\u306a\u304f\u3068\u3082\u751f\u304d\u5ef6\u3073\u308d',
     challenge_accept: '\uD83C\uDD9A \u30c1\u30e3\u30ec\u30f3\u30b8\u958b\u59cb',
     shop_title: '\uD83C\uDFA8 \u30b7\u30e7\u30c3\u30d7',
-    badge_survivor: '\uD83C\uDFC6 \u30b5\u30d0\u30a4\u30d0\u30fc!'
+    badge_survivor: '\uD83C\uDFC6 \u30b5\u30d0\u30a4\u30d0\u30fc!',
+    rotate_message: '\u30c7\u30d0\u30a4\u30b9\u3092\u56de\u8ee2\u3055\u305b\u3066\u304f\u3060\u3055\u3044'
   }
 };
 
@@ -242,3 +250,13 @@ window.addEventListener('DOMContentLoaded', () => {
   initLangSelector();
   setLang(currentLang);
 });
+
+if (typeof module !== 'undefined') {
+  module.exports = {
+    setLang,
+    t,
+    registerTranslations,
+    applyTranslations,
+    translations
+  };
+}
