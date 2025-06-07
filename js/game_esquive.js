@@ -32,11 +32,13 @@ function startEsquiveMode() {
   let lastPos = null;
 
   canvas.ontouchstart = e => {
+    e.preventDefault();
     dragging = true;
     const touch = e.touches[0];
     lastPos = { x: touch.clientX, y: touch.clientY };
   };
   canvas.ontouchmove = e => {
+    e.preventDefault();
     if (!dragging) return;
     const touch = e.touches[0];
     const dx = touch.clientX - lastPos.x;
@@ -138,10 +140,10 @@ function startEsquiveMode() {
 function showGameOverEsquive(score) {
   showOverlay(`
     <div style="background:#232342;padding:2.2em 2.2em 1.4em 2.2em;border-radius:20px;box-shadow:0 6px 32px #0008;text-align:center;min-width:240px;max-width:97vw">
-      <h2 style="color:#f1c40f">Game Over !</h2>
-      <p style="font-size:1.3em;color:#fff;margin:0.6em 0 1.3em 0;">Score : <b>${score.toFixed(1)}</b></p>
-      <button class="main-button" onclick="hideOverlay();launchMode('esquive')">🔁 Rejouer</button>
-      <button class="sub-btn" style="margin-left:0.5em" onclick="hideOverlay()">🏠 Menu</button>
+      <h2 style="color:#f1c40f">${t('game_over_title')}</h2>
+      <p style="font-size:1.3em;color:#fff;margin:0.6em 0 1.3em 0;">${t('score_label')} <b>${score.toFixed(1)}</b></p>
+      <button class="main-button" onclick="hideOverlay();launchMode('esquive')">${t('retry')}</button>
+      <button class="sub-btn" style="margin-left:0.5em" onclick="hideOverlay()">${t('menu')}</button>
     </div>
   `);
 }
