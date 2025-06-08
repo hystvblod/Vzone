@@ -23,6 +23,7 @@ const THEMES = [
 ];
 
 let currentTheme = localStorage.getItem('vzone-theme') || 'classic';
+let currentPlayerColor = localStorage.getItem('vzone-player-color') || '#f1c40f';
 
 function openShop() {
   let html = `<div style="background:#222238;padding:2em 1.2em;border-radius:22px;min-width:260px;max-width:98vw;text-align:center;box-shadow:0 6px 30px #0008">
@@ -71,6 +72,16 @@ function applyTheme(themeId) {
   // Tu peux customiser ici pour changer aussi le fond, le canvas, etc.
 }
 
+function selectPlayerColor(color) {
+  currentPlayerColor = color;
+  localStorage.setItem('vzone-player-color', color);
+  applyPlayerColor(color);
+}
+
+function applyPlayerColor(color) {
+  document.body.style.setProperty('--player-color', color);
+}
+
 // Utilitaire pour traduction dans la boutique
 function getTrad(key) {
   return translations[currentLang] && translations[currentLang][key]
@@ -83,4 +94,9 @@ window.addEventListener('DOMContentLoaded', () => {
   const btnShop = document.getElementById('shopButton');
   if (btnShop) btnShop.onclick = openShop;
   applyTheme(currentTheme);
+  applyPlayerColor(currentPlayerColor);
 });
+
+if (typeof module !== 'undefined') {
+  module.exports = { applyTheme, selectPlayerColor, applyPlayerColor };
+}

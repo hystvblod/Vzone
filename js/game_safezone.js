@@ -5,10 +5,11 @@ let playerSZ, safeZone, timeInside = 0, totalRequired = 30;
 let safezoneAnimFrame = null, szMoveInterval = null;
 let obstaclesSZ = [], levelSZ = 0, obsIntervalSZ = null;
 
-function startSafeZoneMode() {
+function startSafeZoneMode(testing = false) {
   safeZoneRunning = true;
   timeInside = 0;
-  playerSZ = { x: 110, y: 110, radius: 19, speed: 4, color: "#3498db" };
+  playerSZ = { x: 110, y: 110, radius: 19, speed: 4,
+    color: localStorage.getItem('vzone-player-color') || '#f1c40f' };
 
   const canvas = document.getElementById('gameCanvas');
   const ctx = canvas.getContext('2d');
@@ -177,7 +178,8 @@ function startSafeZoneMode() {
     safezoneAnimFrame = requestAnimationFrame(update);
   }
 
-  update();
+  if (!testing) update();
+  return playerSZ;
 }
 
 // Overlay victoire SafeZone
@@ -204,4 +206,8 @@ function showGameOverSafeZone(score) {
       <button class="sub-btn" style="margin-left:0.5em" onclick="returnToMenu()">${t('menu')}</button>
     </div>
   `);
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = { startSafeZoneMode };
 }
