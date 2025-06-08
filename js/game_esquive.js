@@ -4,15 +4,15 @@ let esquiveRunning = false;
 let player, obstacles = [], esquiveScore = 0, level = 0;
 let esquiveInterval = null, esquiveAnimFrame = null;
 
-function startEsquiveMode() {
+function startEsquiveMode(testing = false) {
   esquiveRunning = true;
   esquiveScore = 0;
-  player = { 
-    x: 110, 
-    y: 110, 
-    radius: 19, 
-    speed: 5, 
-    color: "#f1c40f" 
+  player = {
+    x: 110,
+    y: 110,
+    radius: 19,
+    speed: 5,
+    color: localStorage.getItem('vzone-player-color') || '#f1c40f'
   };
   obstacles = [];
   level = 0;
@@ -157,7 +157,8 @@ function startEsquiveMode() {
     esquiveAnimFrame = requestAnimationFrame(update);
   }
 
-  update();
+  if (!testing) update();
+  return player;
 }
 
 // Affiche un écran game over avec score (overlay)
@@ -170,4 +171,8 @@ function showGameOverEsquive(score) {
       <button class="sub-btn" style="margin-left:0.5em" onclick="returnToMenu()">${t('menu')}</button>
     </div>
   `);
+}
+
+if (typeof module !== 'undefined') {
+  module.exports = { startEsquiveMode };
 }
