@@ -29,6 +29,7 @@ const translations = {
     challenge_goal: 'Survis au moins',
     challenge_accept: '\uD83C\uDD9A Relever le d\u00e9fi',
     shop_title: '\uD83C\uDFA8 Boutique',
+    bouton_boutique: '\uD83C\uDFA8 Boutique',
     badge_survivor: '\uD83C\uDFC6 Survivant !',
     game_over_title: 'Game Over !',
     victory_title: 'Bravo !',
@@ -60,6 +61,7 @@ const translations = {
     challenge_goal: 'Survive at least',
     challenge_accept: '\uD83C\uDD9A Accept challenge',
     shop_title: '\uD83C\uDFA8 Shop',
+    bouton_boutique: '\uD83C\uDFA8 Shop',
     badge_survivor: '\uD83C\uDFC6 Survivor!',
     game_over_title: 'Game Over!',
     victory_title: 'Well done!',
@@ -86,6 +88,7 @@ const translations = {
     challenge_goal: '\u00dcberlebe mindestens',
     challenge_accept: '\uD83C\uDD9A Herausforderung annehmen',
     shop_title: '\uD83C\uDFA8 Shop',
+    bouton_boutique: '\uD83C\uDFA8 Shop',
     badge_survivor: '\uD83C\uDFC6 \u00dcberlebender!',
     rotate_message: 'Bitte drehen Sie Ihr Ger\u00e4t'
   },
@@ -109,6 +112,7 @@ const translations = {
     challenge_goal: 'Sobrevive al menos',
     challenge_accept: '\uD83C\uDD9A Aceptar desaf\u00edo',
     shop_title: '\uD83C\uDFA8 Tienda',
+    bouton_boutique: '\uD83C\uDFA8 Tienda',
     badge_survivor: '\uD83C\uDFC6 Superviviente!',
     rotate_message: 'Gira tu dispositivo'
   },
@@ -132,6 +136,7 @@ const translations = {
     challenge_goal: 'Overleef minstens',
     challenge_accept: '\uD83C\uDD9A Uitdaging accepteren',
     shop_title: '\uD83C\uDFA8 Winkel',
+    bouton_boutique: '\uD83C\uDFA8 Winkel',
     badge_survivor: '\uD83C\uDFC6 Overlever!',
     rotate_message: 'Draai je apparaat'
   },
@@ -155,6 +160,7 @@ const translations = {
     challenge_goal: 'Sopravvivi almeno',
     challenge_accept: '\uD83C\uDD9A Accetta la sfida',
     shop_title: '\uD83C\uDFA8 Negozio',
+    bouton_boutique: '\uD83C\uDFA8 Negozio',
     badge_survivor: '\uD83C\uDFC6 Sopravvissuto!',
     rotate_message: 'Ruota il dispositivo'
   },
@@ -178,6 +184,7 @@ const translations = {
     challenge_goal: 'Sobreviva por pelo menos',
     challenge_accept: '\uD83C\uDD9A Aceitar desafio',
     shop_title: '\uD83C\uDFA8 Loja',
+    bouton_boutique: '\uD83C\uDFA8 Loja',
     badge_survivor: '\uD83C\uDFC6 Sobrevivente!',
     rotate_message: 'Gire o dispositivo'
   },
@@ -201,6 +208,7 @@ const translations = {
     challenge_goal: '\u5c11\u306a\u304f\u3068\u3082\u751f\u304d\u5ef6\u3073\u308d',
     challenge_accept: '\uD83C\uDD9A \u30c1\u30e3\u30ec\u30f3\u30b8\u958b\u59cb',
     shop_title: '\uD83C\uDFA8 \u30b7\u30e7\u30c3\u30d7',
+    bouton_boutique: '\uD83C\uDFA8 \u30b7\u30e7\u30c3\u30d7',
     badge_survivor: '\uD83C\uDFC6 \u30b5\u30d0\u30a4\u30d0\u30fc!',
     rotate_message: '\u30c7\u30d0\u30a4\u30b9\u3092\u56de\u8ee2\u3055\u305b\u3066\u304f\u3060\u3055\u3044'
   }
