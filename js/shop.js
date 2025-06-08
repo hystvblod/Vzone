@@ -27,7 +27,7 @@ let currentPlayerColor = localStorage.getItem('vzone-player-color') || '#f1c40f'
 
 function openShop() {
   let html = `<div style="background:#222238;padding:2em 1.2em;border-radius:22px;min-width:260px;max-width:98vw;text-align:center;box-shadow:0 6px 30px #0008">
-    <h2 style="color:#f1c40f;margin-bottom:1em;">${getTrad("bouton_boutique")}</h2>
+    <h2 style="color:#f1c40f;margin-bottom:1em;">${t('shop_title')}</h2>
     <div style="display:flex;gap:1.5em;justify-content:center;margin-bottom:1.6em;flex-wrap:wrap;">`;
 
   THEMES.forEach(th => {

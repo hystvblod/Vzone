@@ -5,7 +5,8 @@ registerTranslations('fr', {
   "bouton_jouer_safezone": "Jouer : SafeZone",
   "bouton_boutique": "Boutique",
   "bouton_parametres": "Paramètres",
-  "titre_jeu": "VZone"
+  "titre_jeu": "VZone",
+  "shop_title": "Boutique"
   // Ajoute ici d’autres textes au besoin :
   // "profil": "Profil",
   // "meilleur_score": "Meilleur score",
