@@ -8,7 +8,7 @@ let obstaclesSZ = [], levelSZ = 0, obsIntervalSZ = null;
 function startSafeZoneMode(testing = false) {
   safeZoneRunning = true;
   timeInside = 0;
-  playerSZ = { x: 110, y: 110, radius: 19, speed: 4,
+  playerSZ = { x: 110, y: 110, radius: 12, speed: 4,
     color: localStorage.getItem('vzone-player-color') || '#f1c40f' };
 
   const canvas = document.getElementById('gameCanvas');
@@ -19,15 +19,15 @@ function startSafeZoneMode(testing = false) {
   safeZone = {
     x: Math.random() * (canvas.width - 140) + 70,
     y: Math.random() * (canvas.height - 140) + 70,
-    radius: 54
+    radius: 40
   };
   obstaclesSZ = [];
   levelSZ = 0;
 
   function addObstacleSZ() {
     levelSZ++;
-    const base = 18;
-    const r = base + levelSZ * 2;
+    const base = 12;
+    const r = base + levelSZ * 1.5;
     const speed = 2 + levelSZ * 0.4;
     const angle = Math.random() * Math.PI * 2;
     obstaclesSZ.push({
