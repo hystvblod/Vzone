@@ -10,7 +10,7 @@ function startEsquiveMode(testing = false) {
   player = {
     x: 110,
     y: 110,
-    radius: 19,
+    radius: 12,
     speed: 5,
     color: localStorage.getItem('vzone-player-color') || '#f1c40f'
   };
@@ -19,8 +19,8 @@ function startEsquiveMode(testing = false) {
 
   function addObstacle() {
     level++;
-    const base = 18;
-    const r = base + level * 2;
+    const base = 12;
+    const r = base + level * 1.5;
     let speed = 2;
     if (level > 3) speed += (level - 3) * 0.4;
     const angle = Math.random() * Math.PI * 2;

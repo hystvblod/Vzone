@@ -1,12 +1,9 @@
 // === VZone - core.js ===
 
-// Redimensionne le canvas selon la fenêtre et le ratio voulu (responsive)
+// Redimensionne le canvas pour occuper tout l'écran
 function resizeCanvas(canvas) {
-  const ratio = window.innerWidth / window.innerHeight;
-  const width = Math.min(window.innerWidth * 0.96, 520);
-  const height = Math.min(window.innerHeight * 0.52, 390);
-  canvas.width = width;
-  canvas.height = height;
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
 }
 
 // Nettoie le canvas
@@ -47,6 +44,20 @@ function hideBackButton() {
   if (b) b.style.display = 'none';
 }
 
+function hideHud() {
+  const header = document.querySelector('header');
+  const footer = document.querySelector('footer');
+  if (header) header.style.display = 'none';
+  if (footer) footer.style.display = 'none';
+}
+
+function showHud() {
+  const header = document.querySelector('header');
+  const footer = document.querySelector('footer');
+  if (header) header.style.display = '';
+  if (footer) footer.style.display = '';
+}
+
 // Affiche ou masque le menu principal
 function showMenu() {
   const menu = document.querySelector('.menu-principal');
@@ -65,6 +76,7 @@ function returnToMenu() {
   resetGameCanvas();
   clearAllEvents();
   hideBackButton();
+  showHud();
 }
 
 // Lance le bon mode de jeu selon le paramètre (esquive ou safezone)
@@ -75,6 +87,7 @@ function launchMode(mode) {
   hideMenu();
   showCanvas();
   showBackButton();
+  hideHud();
 
   if (mode === 'esquive' && typeof startEsquiveMode === 'function') {
     startEsquiveMode();
@@ -126,7 +139,9 @@ if (typeof module !== "undefined") {
     hideMenu,
     returnToMenu,
     showBackButton,
-    hideBackButton
+    hideBackButton,
+    hideHud,
+    showHud
   };
 }
 
