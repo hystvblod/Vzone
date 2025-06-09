@@ -7,12 +7,18 @@ let esquiveInterval = null, esquiveAnimFrame = null;
 function startEsquiveMode() {
   esquiveRunning = true;
   esquiveScore = 0;
-  player = { 
-    x: 110, 
-    y: 110, 
-    radius: 19, 
-    speed: 5, 
-    color: "#f1c40f" 
+  const pId = localStorage.getItem('vzone-player-color') || (PLAYER_COLORS && PLAYER_COLORS[0].id);
+  const eId = localStorage.getItem('vzone-enemy-color') || (ENEMY_COLORS && ENEMY_COLORS[0].id);
+  const pOpt = (typeof PLAYER_COLORS !== 'undefined') ? PLAYER_COLORS.find(c => c.id === pId) : null;
+  const eOpt = (typeof ENEMY_COLORS !== 'undefined') ? ENEMY_COLORS.find(c => c.id === eId) : null;
+  const playerColor = pOpt ? pOpt.color : '#f1c40f';
+  const enemyColor = eOpt ? eOpt.color : '#e74c3c';
+  player = {
+    x: 110,
+    y: 110,
+    radius: 19,
+    speed: 5,
+    color: playerColor
   };
   obstacles = [];
   level = 0;
@@ -41,7 +47,7 @@ function startEsquiveMode() {
       radius: r,
       dx: speed * Math.cos(angle),
       dy: speed * Math.sin(angle),
-      color: "#e74c3c"
+      color: enemyColor
     });
   }
 

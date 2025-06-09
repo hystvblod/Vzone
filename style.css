@@ -78,6 +78,14 @@ main {
   z-index: 2;
 }
 
+.shop-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+  gap: 1em;
+  justify-items: center;
+  margin-bottom: 1.2em;
+}
+
 .main-button,
 .main-btn, .sub-btn, .danger-btn, .icon-btn {
   display: inline-block;

@@ -5,10 +5,26 @@ let playerSZ, safeZone, timeInside = 0, totalRequired = 30;
 let safezoneAnimFrame = null, szMoveInterval = null;
 let obstaclesSZ = [], levelSZ = 0, obsIntervalSZ = null;
 
+function hexToRGBA(hex, alpha) {
+  const r = parseInt(hex.slice(1,3),16);
+  const g = parseInt(hex.slice(3,5),16);
+  const b = parseInt(hex.slice(5,7),16);
+  return `rgba(${r}, ${g}, ${b}, ${alpha})`;
+}
+
 function startSafeZoneMode() {
   safeZoneRunning = true;
   timeInside = 0;
-  playerSZ = { x: 110, y: 110, radius: 19, speed: 4, color: "#3498db" };
+  const pId = localStorage.getItem('vzone-player-color') || (PLAYER_COLORS && PLAYER_COLORS[0].id);
+  const eId = localStorage.getItem('vzone-enemy-color') || (ENEMY_COLORS && ENEMY_COLORS[0].id);
+  const zId = localStorage.getItem('vzone-zone-color') || (ZONE_COLORS && ZONE_COLORS[0].id);
+  const pOpt = (typeof PLAYER_COLORS !== 'undefined') ? PLAYER_COLORS.find(c => c.id === pId) : null;
+  const eOpt = (typeof ENEMY_COLORS !== 'undefined') ? ENEMY_COLORS.find(c => c.id === eId) : null;
+  const zOpt = (typeof ZONE_COLORS !== 'undefined') ? ZONE_COLORS.find(c => c.id === zId) : null;
+  const playerColor = pOpt ? pOpt.color : '#3498db';
+  const enemyColor = eOpt ? eOpt.color : '#e74c3c';
+  const zoneBase = zOpt ? zOpt.color : '#41ff7d';
+  playerSZ = { x: 110, y: 110, radius: 19, speed: 4, color: playerColor };
 
   const canvas = document.getElementById('gameCanvas');
   const ctx = canvas.getContext('2d');
@@ -35,7 +51,7 @@ function startSafeZoneMode() {
       radius: r,
       dx: speed * Math.cos(angle),
       dy: speed * Math.sin(angle),
-    color: "#e74c3c"
+    color: enemyColor
     });
   }
 
@@ -111,7 +127,7 @@ function startSafeZoneMode() {
     // Safe zone (rond vert semi-transparent)
     ctx.beginPath();
     ctx.arc(safeZone.x, safeZone.y, safeZone.radius, 0, 2 * Math.PI);
-    ctx.fillStyle = "rgba(65, 255, 125, 0.23)";
+    ctx.fillStyle = hexToRGBA(zoneBase, 0.23);
     ctx.shadowColor = "#b0faac";
     ctx.shadowBlur = 10;
     ctx.fill();

@@ -33,6 +33,9 @@ const translations = {
     game_over_title: 'Game Over !',
     victory_title: 'Bravo !',
     score_label: 'Score :',
+    label_player_color: 'Couleur du joueur',
+    label_enemy_color: 'Couleur des ennemis',
+    label_zone_color: 'Couleur de la zone',
     rotate_message: 'Veuillez tourner votre appareil'
   },
   en: {
@@ -64,6 +67,9 @@ const translations = {
     game_over_title: 'Game Over!',
     victory_title: 'Well done!',
     score_label: 'Score:',
+    label_player_color: 'Player color',
+    label_enemy_color: 'Enemy color',
+    label_zone_color: 'Zone color',
     rotate_message: 'Please rotate your device'
   },
   de: {
