@@ -97,6 +97,3 @@ window.addEventListener('DOMContentLoaded', () => {
   applyPlayerColor(currentPlayerColor);
 });
 
-if (typeof module !== 'undefined') {
-  module.exports = { applyTheme, selectPlayerColor, applyPlayerColor };
-}

@@ -129,19 +129,4 @@ window.addEventListener('DOMContentLoaded', () => {
   // Si d’autres boutons/menu à brancher, on peut continuer ici...
 });
 
-if (typeof module !== "undefined") {
-  module.exports = {
-    resizeCanvas,
-    clearAllEvents,
-    showCanvas,
-    hideCanvas,
-    showMenu,
-    hideMenu,
-    returnToMenu,
-    showBackButton,
-    hideBackButton,
-    hideHud,
-    showHud
-  };
-}
 

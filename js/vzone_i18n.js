@@ -259,12 +259,3 @@ window.addEventListener('DOMContentLoaded', () => {
   setLang(currentLang);
 });
 
-if (typeof module !== 'undefined') {
-  module.exports = {
-    setLang,
-    t,
-    registerTranslations,
-    applyTranslations,
-    translations
-  };
-}

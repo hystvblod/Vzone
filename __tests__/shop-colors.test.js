@@ -1,10 +1,24 @@
+const fs = require('fs');
+const path = require('path');
+
+const load = file => {
+  const code = fs.readFileSync(path.join(__dirname, '..', 'js', file), 'utf8');
+  const script = document.createElement('script');
+  script.textContent = code;
+  document.head.appendChild(script);
+};
+
 let applyTheme, selectPlayerColor;
 
+beforeAll(() => {
+  load('shop.js');
+  applyTheme = window.applyTheme;
+  selectPlayerColor = window.selectPlayerColor;
+});
+
 beforeEach(() => {
-  jest.resetModules();
   document.body.innerHTML = '';
   localStorage.clear();
-  ({ applyTheme, selectPlayerColor } = require('../js/shop'));
 });
 
 describe('shop color selection', () => {
@@ -21,8 +35,12 @@ describe('shop color selection', () => {
 });
 
 describe('game modules read stored color', () => {
+  beforeAll(() => {
+    load('game_esquive.js');
+    load('game_safezone.js');
+  });
+
   beforeEach(() => {
-    jest.resetModules();
     document.body.innerHTML = '<canvas id="gameCanvas"></canvas>';
     const canvas = document.getElementById('gameCanvas');
     canvas.getContext = () => ({
@@ -40,14 +58,12 @@ describe('game modules read stored color', () => {
   });
 
   test('esquive mode uses stored color', () => {
-    const { startEsquiveMode } = require('../js/game_esquive');
-    const player = startEsquiveMode(true);
+    const player = window.startEsquiveMode(true);
     expect(player.color).toBe('#abcdef');
   });
 
   test('safezone mode uses stored color', () => {
-    const { startSafeZoneMode } = require('../js/game_safezone');
-    const player = startSafeZoneMode(true);
+    const player = window.startSafeZoneMode(true);
     expect(player.color).toBe('#abcdef');
   });
 });
