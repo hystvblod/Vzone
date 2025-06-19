@@ -173,6 +173,3 @@ function showGameOverEsquive(score) {
   `);
 }
 
-if (typeof module !== 'undefined') {
-  module.exports = { startEsquiveMode };
-}

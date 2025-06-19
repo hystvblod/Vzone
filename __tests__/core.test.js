@@ -1,4 +1,19 @@
-const { resizeCanvas, clearAllEvents } = require('../js/core');
+const fs = require('fs');
+const path = require('path');
+
+function load(file) {
+  const code = fs.readFileSync(path.join(__dirname, '..', 'js', file), 'utf8');
+  const script = document.createElement('script');
+  script.textContent = code;
+  document.head.appendChild(script);
+}
+
+let resizeCanvas, clearAllEvents;
+
+beforeAll(() => {
+  load('core.js');
+  ({ resizeCanvas, clearAllEvents } = window);
+});
 
 describe('resizeCanvas', () => {
   test('sets canvas dimensions to window size', () => {

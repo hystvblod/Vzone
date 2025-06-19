@@ -208,6 +208,3 @@ function showGameOverSafeZone(score) {
   `);
 }
 
-if (typeof module !== 'undefined') {
-  module.exports = { startSafeZoneMode };
-}
